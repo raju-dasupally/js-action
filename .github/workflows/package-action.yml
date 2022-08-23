@@ -1,0 +1,19 @@
+name: 'publish-action'
+on: # rebuild any PRs and main branch changes
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  test: # make sure the action works on a clean machine without building
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out!
+        uses: actions/checkout@v3
+        
+      - name: Publish action 
+        uses: ruchika-jain/package-action@main
+        id: publish-action
+        with: 
+           semver: ${{ github.event.release.tag_name }}
+        
