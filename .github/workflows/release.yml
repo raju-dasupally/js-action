@@ -11,9 +11,6 @@ jobs:
       - name: Checking out!
         uses: actions/checkout@v3
         
-      - name: prerelese check
-        uses: raju-dasupally/js-action@4.3.2-rc
-       
 #       - name: Use Node.js
 #         uses: actions/setup-node@v3
 #         with:
@@ -30,9 +27,5 @@ jobs:
 #           output: 'minify/src/' # (OPTIONAL)
         
       - name: Publish action 
-        uses: ruchika-jain/package-action@2.0.0
-        id: publish-action
-        with: 
-           semver: ${{ github.event.release.tag_name }}
-#            workdir: 'minify/src/'
+        uses: actions-on-packages/package-action@main
         
